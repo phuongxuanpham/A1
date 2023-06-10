@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <title>BCT Network Graph 08</title>
+  <link href="https://playground.anychart.com/rNO4R6vI/iframe" rel="canonical">
+  <meta content="Tooltip" name="keywords">
+  <meta content="AnyChart - JavaScript Charts designed to be embedded and integrated" name="description">
+  <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+  <link href="https://cdn.anychart.com/releases/8.11.1/css/anychart-ui.min.css?hcode=a0c21fc77e1449cc86299c5faa067dc4" rel="stylesheet" type="text/css">
+  <style>html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+label {
+    display: inline-block;
+    margin: 10px 0 0 10px;
+}
+#container {
+    position: absolute;
+    width: 100%;
+    top: 35px;
+    bottom: 0;
+}</style>
+ </head>
+ <body>
+  <meta charset="utf-8"> 
+  <label><input onclick="layoutType('forced')" type="radio" name="type" checked>Forced Layout</label> 
+  <label><input onclick="layoutType('fixed')" type="radio" name="type">Fixed Layout</label> 
+  <div id="container"></div>
+  <script src="https://cdn.anychart.com/releases/8.11.1/js/anychart-core.min.js?hcode=a0c21fc77e1449cc86299c5faa067dc4"></script>
+  <script src="https://cdn.anychart.com/releases/8.11.1/js/anychart-graph.min.js?hcode=a0c21fc77e1449cc86299c5faa067dc4"></script>
+  <script src="https://cdn.anychart.com/releases/8.11.1/js/anychart-exports.min.js?hcode=a0c21fc77e1449cc86299c5faa067dc4"></script>
+  <script src="https://cdn.anychart.com/releases/8.11.1/js/anychart-ui.min.js?hcode=a0c21fc77e1449cc86299c5faa067dc4"></script>
+  <script type="text/javascript">anychart.onDocumentReady(function () {
+
+    // create data
+    var data = {
+      nodes: [
+        {id: "Lê Quang Trung", group: "xóm nhà lá", last_name: "(Cu nhỏ)",
+         x:   0, y: 100,
+         fill: {
+                 src: "https://drive.google.com/thumbnail?id=1L02YrCdU-ftVCEuQnzRqROMalYBop6Fv"
+               }         
+        },
+        {id: "Võ Ngọc Đức", group: "xóm nhà lá", last_name: "(Cội)",
+         x:   0, y: 200,
+         fill: {
+                 src: "https://drive.google.com/thumbnail?id=1lhedXu7hJQ1L_a3Gr0jdqS9W6VxnGXma"
+               }         
+        },
+        {id: "Phan Anh Tuấn", group: "xóm nhà lá", last_name: "(Tuấn Te)",
+         x:   0, y: 300,
+         fill: {
+                 src: "https://drive.google.com/thumbnail?id=1zJM5SPYKw1ghtb3O1DtWXXam9drGZx7I"
+               }         
+        },
+        {id: "Lương Thị Minh Thủy", group: "xóm nhà lá", last_name: "(Thủy Mập)",
+         x:   0, y: 400,
+         fill: {
+                 src: "https://drive.google.com/thumbnail?id=18nfCVNpvPIzv9xpKxv9FmscfCVP5wldU"
+               }         
+        },
+        {id: "Đặng Phi Hùng", group: "xóm nhà lá", last_name: "(Cu Đen)",
+         x:   0, y: 500,
+         fill: {
+                 src: "https://drive.google.com/thumbnail?id=1Ye27gXEVLDJ0tKQrxl5Y7islI8FKgRwi"
+               }         
+        },
+        {id: "Ngô Thu Trang",
+         x:   0, y: 600,
+         fill: {
+                 src: "https://drive.google.com/thumbnail?id=1cN4W1YXTvswMtWGa5BQ7-grqn-qiL9u-"
+               }         
+        },
+        {id: "Lê Thị Minh Ngọc",
+         x:   200, y: 100,
+         fill: {
+                 src: "https://drive.google.com/thumbnail?id=1yEYo83VGIZCAIgyucwHpPO1Jb87-p31-"
+               }         
+        },
+        {id: "Nguyễn Thị Thanh Hoa",
+         x:   200, y: 200,
+         fill: {
+                 src: "https://drive.google.com/thumbnail?id=1M-1WRW9bjTTTicRUopL_EbsB2t8lYuUK"
+               }         
+        },
+        {id: "Bùi Diên Trường",
+         x:   200, y: 300,
+         fill: {
+                 src: "https://drive.google.com/thumbnail?id=18-ym9GG7YDv23TI_mg9kp3aeAkQpq7c6"
+               }         
+        },
+        {id: "Lê Văn Quang", group: "xóm nhà lá", last_name: "(Nobita mắt kính)",
+         x:   200, y: 400,
+         fill: {
+                 src: "https://drive.google.com/thumbnail?id=1iWdXukMW349fYX_pBWxdd4wptPJlM_Zb"
+               }         
+        },
+        {id: "Hồ Thị Mỹ Hạnh", group: "xóm nhà lá", last_name: "(Gà trống)",
+         x:   200, y: 500,
+         fill: {
+                 src: "https://drive.google.com/thumbnail?id=1KVx2L9ZlIOQUFp3doZ5aGKFRDzQDxaWP"
+               }         
+        },
+        {id: "Hoàng Ngọc Trâm",
+         x:   200, y: 600,
+         fill: {
+                 src: "https://drive.google.com/thumbnail?id=11A2yso1fR7A38i4yXWVLHLOHjZ2T8QYF"
+               }         
+        },
+        {id: "Phan Nguyễn Hải Yến",
+         x:   400, y: 100,
+         fill: {
+                 src: "https://drive.google.com/thumbnail?id=1O01k4mQfdfxrGxYQv-EE-mw2obbVZ2IE"
+               }         
+        },
+        {id: "Nguyễn Trường Giang",
+         x:   400, y: 200,
+         fill: {
+                 src: "https://drive.google.com/thumbnail?id=1qx3EFZCdxuwIg9HSrg-ANsc_0ZCZcvYG"
+               }         
+        },
+        {id: "Nguyễn Thành Chung",
+         x:   400, y: 300,
+         fill: {
+                 src: "https://drive.google.com/thumbnail?id=1LCZ97_3pk6AsLIdbRBslZ1xiIyfy5PK0"
+               }         
+        },
+        {id: "Hồ Hoàng Anh",
+         x:   400, y: 400,
+         fill: {
+                 src: "https://drive.google.com/thumbnail?id=1-Ewc3maFuQQCndXU80C1faIKc2NPOvwO"
+               }         
+        },
+        {id: "Nguyễn Hồ Phương Thảo",
+         x:   400, y: 500,
+         fill: {
+                 src: "https://drive.google.com/thumbnail?id=11VOMGLWaLVHe79hk0yZkb7pz99kOSeoa"
+               }         
+        },
+        {id: "Huỳnh Công Minh",
+         x:   400, y: 600,
+         fill: {
+                 src: "https://drive.google.com/thumbnail?id=1VABWFsaz2-SSKpNbn7rMA9TQosNS56bu"
+               }         
+        },
+        {id: "Nguyễn Trà",
+         x:   600, y: 100,
+         fill: {
+                 src: "https://drive.google.com/thumbnail?id=1ITq3L-PsNjlC450dIryY2kIgHE4Gnfqd"
+               }         
+        },
+        {id: "Ngô Thùy Dương",
+         x:   600, y: 200,
+         fill: {
+                 src: "https://drive.google.com/thumbnail?id=1S-iNK-zhj-rq5LUw0Ri41i32BLM3N8XM"
+               }         
+        },
+        {id: "Hoàng Anh Tiến", group: "xóm nhà lá", last_name: "(Trùm xóc)",
+         x:   600, y: 300,
+         fill: {
+                 src: "https://drive.google.com/thumbnail?id=1fdGFWAtYTbHO7IPXVzDbJeGeYcGBSoH9"
+               }         
+        },
+        {id: "Phan Thị Ý",
+         x:   600, y: 400,
+         fill: {
+                 src: "https://drive.google.com/thumbnail?id=1MFyxSRbB46UVMql1RIHqMMQaHcwm16rs"
+               }         
+        },
+        {id: "Trần Thị Quỳnh Anh",
+         x:   600, y: 500,
+         fill: {
+                 src: "https://drive.google.com/thumbnail?id=1I1SdLMxTdURuNYAaY-rQ95mixSwtxu3w"
+               }         
+        },
+        {id: "Nguyễn Thị Thanh Bình",
+         x:   600, y: 600,
+         fill: {
+                 src: "https://drive.google.com/thumbnail?id=1xE0B7la9KflOI96BXfNA_UVVsem6DDH4"
+               }         
+        },
+        {id: "Nguyễn Hứa Khánh Trang",
+         x:   800, y: 100,
+         fill: {
+                 src: "https://drive.google.com/thumbnail?id=1uehb1ZE1MfoaLoB6u8H7q7od5rJ-1J43"
+               }         
+        },
+        {id: "Nguyễn Nhật Khoa", group: "xóm nhà lá", last_name: "(Ram bô)",
+         x:   800, y: 200,
+         fill: {
+                 src: "https://drive.google.com/thumbnail?id=1ov_37f-_Vb4DZ574SkBIMDo_C9OiRkqn"
+               }             
+        },
+        {id: "Nguyễn Thị Thúy Hà",
+         x:   800, y: 300,
+         fill: {
+                 src: "https://drive.google.com/thumbnail?id=1czMafD0YyCoKTN1SXgHw9iJLG7yiM-wD"
+               }         
+        },
+        {id: "Phạm Thị Xuân Phương",
+         x:   800, y: 400,
+         fill: {
+                 src: "https://drive.google.com/thumbnail?id=1LfQAnqcX9VRV-8IuvsB_l-6P2k7oOX6S"
+               }         
+        },
+        {id: "Châu Nguyên Anh", group: "xóm nhà lá", last_name: "(Gà mái)",
+         x:   800, y: 500,
+         fill: {
+                 src: "https://drive.google.com/thumbnail?id=1UFmQZXgVB0-xFu3xJ__VDlULeQO8d_LF"
+               }         
+        },
+        {id: "Phạm Hoàng Thảo Linh",
+         x:   800, y: 600,
+         fill: {
+                 src: "https://drive.google.com/thumbnail?id=1IE3iUodXUdcth_7Bn9d5KOYQ8Tkwrauv"
+               }         
+        },
+        {id: "Lê Thị Thúy Hà", group: "xóm nhà lá", last_name: "(Hà beautiful)",
+         x:   1000, y: 100,
+         fill: {
+                 src: "https://drive.google.com/thumbnail?id=1YAOynW1XQfmz_GYFmcvUF5g-iESHBS5m"
+               }         
+        },
+        {id: "Hà Diệu Thương",
+         x:   1000, y: 200,
+         fill: {
+                 src: "https://drive.google.com/thumbnail?id=1OHOGbtsHss7djjvSR21RCC9G5tJ_VfxS"
+               }         
+        },
+        {id: "Tôn Quốc Cẩm Nghi", group: "xóm nhà lá", last_name: "(Gạo)",
+         x:   1000, y: 300,
+         fill: {
+                 src: "https://drive.google.com/thumbnail?id=13_5WpeCnKJkPeWI9OeIDGifOE_A-xcq5"
+               }         
+        },
+        {id: "Lê Cát Ngọc",
+         x:   1000, y: 400,
+         fill: {
+                 src: "https://drive.google.com/thumbnail?id=13ICW0k3bLVOhZqkU592XbrvmwS2Lm5ZL"
+               }         
+        },
+        {id: "Huỳnh Đức", group: "alone",
+         x:   1000, y: 500,
+         fill: {
+                 src: "https://drive.google.com/thumbnail?id=1K36Y8W4ODQSJDDRsojVcvfShOBU53UTA"
+               }         
+        },
+        {id: "Nguyễn Thị Thủy Tiên",
+         x:   1000, y: 600,
+         fill: {
+                 src: "https://drive.google.com/thumbnail?id=1GNng_T8d281Qhx4r4baO1-MNMIUPO4Ni"
+               }         
+        },
+        {id: "Trương Hoàng Anh",
+         x:   1200, y: 100,
+         fill: {
+                 src: "https://drive.google.com/thumbnail?id=1p1MDG66CTIT1PgM8ajvUY599y1UCHR47"
+               }         
+        },
+        {id: "Trần Quốc Huy",
+         x:   1200, y: 200,
+         fill: {
+                 src: "https://drive.google.com/thumbnail?id=1YRODvwEexZH2HYnVh2e0xtzD7cHeblzI"
+               }         
+        },
+        {id: "Trần Kim Ngà",
+         x:   1200, y: 300,
+         fill: {
+                 src: "https://drive.google.com/thumbnail?id=1YPJyOjYuTYiQjKii8788OkCygyWrTPNo"
+               }         
+        },
+        {id: "Đỗ Ngọc Hà",
+         x:   1200, y: 400,
+         fill: {
+                 src: "https://drive.google.com/thumbnail?id=12SJJFdeCzlrPS5zL7XcNqNUqmm4pnz1s"
+               }         
+        },
+        {id: "Hoàng Duy Hải",
+         x:   1200, y: 500,
+         fill: {
+                 src: "https://drive.google.com/thumbnail?id=1zfS7NYF8QiaGi_AG0G5a_OABBCgWBAr2"
+               }         
+        },
+        {id: "Nguyễn Minh Tâm",
+         x:   1200, y: 600,
+         fill: {
+                 src: "https://drive.google.com/thumbnail?id=1rLzv0STrLx3ZsYB9hlAqMiKsD8ThHZMY"
+               }         
+        },
+        {id: "Hồ Thị Như",
+         x:   800, y: 200,
+         fill: {
+                 src: "https://drive.google.com/thumbnail?id=1Iym6ZQhv_oNRjgt2D7EvblagqF97_3VS"
+               }    
+        }
+      ],
+      edges: [
+        {from: "Lê Quang Trung", to: "Lê Thị Minh Ngọc"},
+        {from: "Võ Ngọc Đức", to: "Phạm Thị Xuân Phương"},        
+        {from: "Lương Thị Minh Thủy",   to: "Nguyễn Thành Chung"},
+        {from: "Nguyễn Thành Chung",   to: "Châu Nguyên Anh"},
+        {from: "Đặng Phi Hùng",   to: "Châu Nguyên Anh"},
+        {from: "Nguyễn Minh Tâm",   to: "Tôn Quốc Cẩm Nghi"},
+        {from: "Tôn Quốc Cẩm Nghi",   to: "Nguyễn Hứa Khánh Trang"},
+        {from: "Hoàng Duy Hải",    to: "Nguyễn Minh Tâm"},
+        {from: "Bùi Diên Trường",    to: "Lê Thị Thúy Hà"},
+        {from: "Bùi Diên Trường",   to: "Phạm Thị Xuân Phương"},
+        {from: "Bùi Diên Trường",    to: "Nguyễn Thị Thúy Hà"},
+        {from: "Trần Quốc Huy",    to: "Nguyễn Thị Thúy Hà"},
+        {from: "Trần Quốc Huy",    to: "Lê Thị Thúy Hà"},
+        {from: "Trần Quốc Huy",   to: "Nguyễn Thị Thanh Bình"},
+        {from: "Đặng Phi Hùng",   to: "Nguyễn Thị Thanh Bình"},
+        {from: "Lê Văn Quang",    to: "Phạm Thị Xuân Phương"},
+        {from: "Hoàng Ngọc Trâm",    to: "Trương Hoàng Anh"},
+        {from: "Phan Anh Tuấn",   to: "Nguyễn Thị Thanh Bình"},
+        {from: "Trương Hoàng Anh",   to: "Hoàng Ngọc Trâm"},        
+        {from: "Võ Ngọc Đức",   to: "Nguyễn Thị Thanh Bình"}
+        
+      ]
+    };
+
+    // create a chart and set the data
+    chart = anychart.graph(data);
+  
+    // prevent zooming the chart with the mouse wheel
+    chart.interactivity().zoomOnMouseWheel(false);
+  
+    // access groups of nodes
+    var family = chart.group("xóm nhà lá");
+    var friends = chart.group("friends");
+    var alone = chart.group("alone");
+  
+    // set the size of nodes
+    chart.nodes().normal().height(60);
+    chart.nodes().hovered().height(100);
+    chart.nodes().selected().height(200);
+    
+    // enable labels of nodes
+    chart.nodes().labels().enabled(true);
+
+    // configure labels of nodes
+    chart.nodes().labels().format("{%id}");
+    chart.nodes().labels().fontSize(12);
+    chart.nodes().labels().fontWeight(600);
+  
+    // configure tooltips of nodes
+    chart.nodes().tooltip().useHtml(true);
+    chart.nodes().tooltip().format(
+      "<span style='font-weight:bold'>{%id} {%last_name}</span><br>group: {%group}"
+    );
+  
+    // set the shape of nodes in groups
+    //family.normal().shape("star5");
+    //friends.normal().shape("diamond");
+    //alone.normal().shape("round");
+
+    // set the fill of nodes in groups
+    //family.normal().fill("#ffa000");
+    //family.hovered().fill("white");
+    //family.selected().fill("#ffa000");
+    //friends.normal().fill("#00bfa5");
+    //friends.hovered().fill("white");
+    //friends.selected().fill("#00bfa5");
+    alone.normal().fill("#ff3300");
+    alone.hovered().fill("white");
+    alone.selected().fill("#ff3300");
+
+    // set the stroke of nodes in groups
+    //family.normal().stroke(null);
+    //family.hovered().stroke("#ffa000", 3);
+    //family.selected().stroke("#333333", 3);
+    //friends.normal().stroke(null);
+    //friends.hovered().stroke("#00bfa5", 3);
+    //friends.selected().stroke("#333333", 3);
+    //alone.normal().shape("diagonal-cross");
+    //alone.normal().stroke(null);
+    alone.hovered().shape("diagonal-cross");
+    alone.hovered().stroke("#ff3300", 3); 
+    alone.selected().stroke("#333333", 3); 
+    //alone.selected().shape("round");
+  
+    chart.nodes().hovered().stroke("#ff0000", 4, "10 5", "round");
+    chart.nodes().selected().stroke("#ff0000", 4);
+  
+    // configure the visual settings of edges
+    chart.edges().normal().stroke("#ff0000", 2, "10 5", "round");
+    chart.edges().hovered().stroke("#ff0000", 4, "10 5", "round");
+    chart.edges().selected().stroke("#ff0000", 4);
+  
+    // configure tooltips of edges
+    chart.edges().tooltip().format("{%from} -> {%to}");
+  
+    // set the hover gap of edges
+  	chart.interactivity().hoverGap(30); 
+
+    // set the chart title
+    chart.title().enabled(true);
+    chart.title().fontColor('#F44336');
+    chart.title().fontSize(50);
+    chart.title().fontDecoration('underline');
+    chart.title().fontWeight('bold');
+    chart.title().fontWeight('bold');
+    chart.title().fontFamily('Ink Free');
+  
+    chart.title().text('Giao lộ tình yêu - A1 K94-97');
+    chart.listen("chartDraw", function () {
+      //chart.title("Giao lộ tình yêu: A1 K94-97: Layout = " + chart.layout().type());    
+      chart.title("Giao lộ tình yêu - A1 K94-97");
+    });
+
+    // set the container id
+    chart.container("container");
+
+    // initiate drawing the chart
+    chart.draw();
+});
+// set the layout type
+function layoutType(type) {
+  chart.layout().type(type);
+}</script>
+ </body>
+</html>
