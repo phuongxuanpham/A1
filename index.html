@@ -5,7 +5,7 @@
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <title>BCT Network Graph 08</title>
-  <link href="https://playground.anychart.com/lNcl6zi6/iframe" rel="canonical">
+  <link href="https://playground.anychart.com/OiKW5Jt7/iframe" rel="canonical">
   <meta content="Tooltip" name="keywords">
   <meta content="AnyChart - JavaScript Charts designed to be embedded and integrated" name="description">
   <!--[if lt IE 9]>
@@ -19,21 +19,38 @@
     margin: 0;
     padding: 0;
 }
+button {
+    margin: 10px 0 0 10px;
+}
 label {
     display: inline-block;
     margin: 10px 0 0 10px;
+}
+input {
+    width: 30px;
+}
+#fitButton {
+    position: absolute;
+    right: 10px;
 }
 #container {
     position: absolute;
     width: 100%;
     top: 35px;
     bottom: 0;
-}</style>
+}
+</style>
  </head>
  <body>
   <meta charset="utf-8"> 
-  <label><input onclick="layoutType('forced')" type="radio" name="type" checked>Forced Layout</label> 
-  <label><input onclick="layoutType('fixed')" type="radio" name="type">Fixed Layout</label> 
+  <label><input onclick="layoutType('forced')" type="radio" name="type" checked>Giao lộ</label> 
+  <label><input onclick="layoutType('fixed')" type="radio" name="type">Mạng nhện</label> 
+  <button id="zoomInButton" onclick="zoomIn()">Zoom In</button> 
+  <button id="zoomOutButton" onclick="zoomOut()">Zoom Out</button> 
+  <button id="moveButton" onclick="move()">Move</button> 
+  <label>x: <input id="xInput" value="50"></label> 
+  <label>y: <input id="yInput" value="50"></label> 
+  <button id="fitButton" onclick="fit()">Fit to Container</button> 
   <div id="container"></div>
   <script src="https://cdn.anychart.com/releases/8.11.1/js/anychart-core.min.js?hcode=a0c21fc77e1449cc86299c5faa067dc4"></script>
   <script src="https://cdn.anychart.com/releases/8.11.1/js/anychart-graph.min.js?hcode=a0c21fc77e1449cc86299c5faa067dc4"></script>
@@ -62,7 +79,7 @@ label {
                  src: "https://drive.google.com/thumbnail?id=1zJM5SPYKw1ghtb3O1DtWXXam9drGZx7I"
                }         
         },
-        {id: "Lương Thị Minh Thủy", group: "", last_name: "(Thủy Mập)",
+        {id: "Lương Thị Minh Thủy", group: "Trường An", last_name: "(Thủy Mập)",
          x:   0, y: 400,
          fill: {
                  src: "https://drive.google.com/thumbnail?id=18nfCVNpvPIzv9xpKxv9FmscfCVP5wldU"
@@ -74,7 +91,7 @@ label {
                  src: "https://drive.google.com/thumbnail?id=1Ye27gXEVLDJ0tKQrxl5Y7islI8FKgRwi"
                }         
         },
-        {id: "Ngô Thu Trang", group: "Xóm nhà lá", last_name: "(Bắp Thu)",
+        {id: "Ngô Thu Trang", group: "Cô đơn trên sofa", last_name: "(Bắp Thu)",
          x:   0, y: 600,
          fill: {
                  src: "https://drive.google.com/thumbnail?id=1cN4W1YXTvswMtWGa5BQ7-grqn-qiL9u-"
@@ -86,7 +103,7 @@ label {
                  src: "https://drive.google.com/thumbnail?id=1yEYo83VGIZCAIgyucwHpPO1Jb87-p31-"
                }         
         },
-        {id: "Nguyễn Thị Thanh Hoa", group: "alone", last_name: "",
+        {id: "Nguyễn Thị Thanh Hoa", group: "Cô đơn trên sofa", last_name: "",
          x:   200, y: 200,
          fill: {
                  src: "https://drive.google.com/thumbnail?id=1M-1WRW9bjTTTicRUopL_EbsB2t8lYuUK"
@@ -104,7 +121,7 @@ label {
                  src: "https://drive.google.com/thumbnail?id=1iWdXukMW349fYX_pBWxdd4wptPJlM_Zb"
                }         
         },
-        {id: "Hồ Thị Mỹ Hạnh", group: "alone", last_name: "(Gà trống)",
+        {id: "Hồ Thị Mỹ Hạnh", group: "Cô đơn trên sofa", last_name: "(Gà trống)",
          x:   200, y: 500,
          fill: {
                  src: "https://drive.google.com/thumbnail?id=1KVx2L9ZlIOQUFp3doZ5aGKFRDzQDxaWP"
@@ -140,25 +157,25 @@ label {
                  src: "https://drive.google.com/thumbnail?id=1-Ewc3maFuQQCndXU80C1faIKc2NPOvwO"
                }         
         },
-        {id: "Nguyễn Hồ Phương Thảo", group: "alone", last_name: "",
+        {id: "Nguyễn Hồ Phương Thảo", group: "Cô đơn trên sofa", last_name: "(thể thao)",
          x:   400, y: 500,
          fill: {
                  src: "https://drive.google.com/thumbnail?id=11VOMGLWaLVHe79hk0yZkb7pz99kOSeoa"
                }         
         },
-        {id: "Huỳnh Công Minh", group: "alone", last_name: "(gù)",
+        {id: "Huỳnh Công Minh", group: "Cô đơn trên sofa", last_name: "(gù)",
          x:   400, y: 600,
          fill: {
                  src: "https://drive.google.com/thumbnail?id=1VABWFsaz2-SSKpNbn7rMA9TQosNS56bu"
                }         
         },
-        {id: "Nguyễn Trà", group: "alone", last_name: "(bán vé số)",
+        {id: "Nguyễn Trà", group: "", last_name: "(bán vé số)",
          x:   600, y: 100,
          fill: {
                  src: "https://drive.google.com/thumbnail?id=1ITq3L-PsNjlC450dIryY2kIgHE4Gnfqd"
                }         
         },
-        {id: "Ngô Thùy Dương", group: "alone", last_name: "",
+        {id: "Ngô Thùy Dương", group: "Cô đơn trên sofa", last_name: "",
          x:   600, y: 200,
          fill: {
                  src: "https://drive.google.com/thumbnail?id=1S-iNK-zhj-rq5LUw0Ri41i32BLM3N8XM"
@@ -194,7 +211,7 @@ label {
                  src: "https://drive.google.com/thumbnail?id=1uehb1ZE1MfoaLoB6u8H7q7od5rJ-1J43"
                }         
         },
-        {id: "Nguyễn Nhật Khoa", group: "alone", last_name: "(Ram bô, xe tăng)",
+        {id: "Nguyễn Nhật Khoa", group: "", last_name: "(Ram bô, xe tăng)",
          x:   800, y: 200,
          fill: {
                  src: "https://drive.google.com/thumbnail?id=1ov_37f-_Vb4DZ574SkBIMDo_C9OiRkqn"
@@ -218,13 +235,13 @@ label {
                  src: "https://drive.google.com/thumbnail?id=1UFmQZXgVB0-xFu3xJ__VDlULeQO8d_LF"
                }         
         },
-        {id: "Phạm Hoàng Thảo Linh", group: "alone", last_name: "",
+        {id: "Phạm Hoàng Thảo Linh", group: "Cô đơn trên sofa", last_name: "",
          x:   800, y: 600,
          fill: {
                  src: "https://drive.google.com/thumbnail?id=1IE3iUodXUdcth_7Bn9d5KOYQ8Tkwrauv"
                }         
         },
-        {id: "Lê Thị Thúy Hà", group: "Xóm nhà lá", last_name: "(Hà beautiful)",
+        {id: "Lê Thị Thúy Hà", group: "Qua C1", last_name: "(Hà beautiful)",
          x:   1000, y: 100,
          fill: {
                  src: "https://drive.google.com/thumbnail?id=1YAOynW1XQfmz_GYFmcvUF5g-iESHBS5m"
@@ -248,19 +265,19 @@ label {
                  src: "https://drive.google.com/thumbnail?id=13ICW0k3bLVOhZqkU592XbrvmwS2Lm5ZL"
                }         
         },
-        {id: "Huỳnh Đức", group: "alone",
+        {id: "Huỳnh Đức", group: "Cô đơn trên sofa",
          x:   1000, y: 500,
          fill: {
                  src: "https://drive.google.com/thumbnail?id=1K36Y8W4ODQSJDDRsojVcvfShOBU53UTA"
                }         
         },
-        {id: "Nguyễn Thị Thủy Tiên", group: "", last_name: "(Chị nuôi của lớp)",
+        {id: "Nguyễn Thị Thủy Tiên", group: "Dâu A5", last_name: "(Chị nuôi của lớp)",
          x:   1000, y: 600,
          fill: {
                  src: "https://drive.google.com/thumbnail?id=1GNng_T8d281Qhx4r4baO1-MNMIUPO4Ni"
                }         
         },
-        {id: "Trương Hoàng Anh", group: "", last_name: "",
+        {id: "Trương Hoàng Anh", group: "", last_name: "Búp Bê",
          x:   1200, y: 100,
          fill: {
                  src: "https://drive.google.com/thumbnail?id=1p1MDG66CTIT1PgM8ajvUY599y1UCHR47"
@@ -272,13 +289,13 @@ label {
                  src: "https://drive.google.com/thumbnail?id=1YRODvwEexZH2HYnVh2e0xtzD7cHeblzI"
                }         
         },
-        {id: "Trần Kim Ngà", group: "alone", last_name: "(Gà)",
+        {id: "Trần Kim Ngà", group: "Cô đơn trên sofa", last_name: "(Gà)",
          x:   1200, y: 300,
          fill: {
                  src: "https://drive.google.com/thumbnail?id=1YPJyOjYuTYiQjKii8788OkCygyWrTPNo"
                }         
         },
-        {id: "Đỗ Ngọc Hà", group: "alone", last_name: "(Hà Đỗ)",
+        {id: "Đỗ Ngọc Hà", group: "Qua C1", last_name: "(Hà Đỗ)",
          x:   1200, y: 400,
          fill: {
                  src: "https://drive.google.com/thumbnail?id=12SJJFdeCzlrPS5zL7XcNqNUqmm4pnz1s"
@@ -296,7 +313,7 @@ label {
                  src: "https://drive.google.com/thumbnail?id=1rLzv0STrLx3ZsYB9hlAqMiKsD8ThHZMY"
                }         
         },
-        {id: "Hồ Thị Như", group: "alone", last_name: "",
+        {id: "Hồ Thị Như", group: "", last_name: "",
          x:   0, y: 700,
          fill: {
                  src: "https://drive.google.com/thumbnail?id=1Iym6ZQhv_oNRjgt2D7EvblagqF97_3VS"
@@ -329,6 +346,8 @@ label {
         {from: "Lê Văn Quang",    to: "Phạm Thị Xuân Phương"},
         {from: "Hoàng Ngọc Trâm",    to: "Trương Hoàng Anh"},
         {from: "Hoàng Ngọc Trâm",    to: "Lê Cát Ngọc"},
+        {from: "Hoàng Ngọc Trâm",    to: "Lê Thị Minh Ngọc"},
+        {from: "Hoàng Ngọc Trâm",    to: "Phạm Thị Xuân Phương"},
         {from: "Hoàng Ngọc Trâm",    to: "Phan Nguyễn Hải Yến"},
         {from: "Phan Anh Tuấn",   to: "Nguyễn Thị Thanh Bình"},
         {from: "Phan Anh Tuấn",   to: "Ngô Thị Ý"},
@@ -336,11 +355,15 @@ label {
         {from: "Hoàng Anh Tiến",   to: "Châu Nguyên Anh"},
         {from: "Hoàng Anh Tiến",   to: "Nguyễn Hứa Khánh Trang"},
         {from: "Hoàng Anh Tiến",   to: "Lê Cát Ngọc"},     
+        {from: "Hoàng Anh Tiến",   to: "Trương Hoàng Anh"},  
         {from: "Phạm Thị Xuân Phương", to: "Võ Ngọc Đức"},
         {from: "Nguyễn Trường Giang", to: "Lê Cát Ngọc"},
         {from: "Nguyễn Trường Giang", to: "Trương Hoàng Anh"},
         {from: "Phan Anh Tuấn", to: "Ngô Thị Ý"},
-        {from: "Trần Thị Quỳnh Anh ", to: "Lê Quang Trung"}
+        {from: "Trần Thị Quỳnh Anh", to: "Lê Quang Trung"},
+        {from: "Nguyễn Nhật Khoa", to: "Châu Nguyên Anh"},
+        {from: "Nguyễn Nhật Khoa", to: "Lê Thị Minh Ngọc"},
+        {from: "Nguyễn Trà", to: "Nguyễn Thị Thanh Bình"}
         
       ]
     };
@@ -354,25 +377,25 @@ label {
     // access groups of nodes
     var xnl = chart.group("Xóm nhà lá");
     var xng = chart.group("Xóm nhà giàu");
-    var alone = chart.group("alone");
+    var alone = chart.group("Cô đơn trên sofa");
   
     // set the size of nodes
-    chart.nodes().normal().height(60);
-    chart.nodes().hovered().height(100);
-    chart.nodes().selected().height(200);
+    chart.nodes().normal().height(70);
+    chart.nodes().hovered().height(120);
+    chart.nodes().selected().height(220);
     
     // enable labels of nodes
     chart.nodes().labels().enabled(true);
 
     // configure labels of nodes
     chart.nodes().labels().format("{%id}");
-    chart.nodes().labels().fontSize(12);
+    chart.nodes().labels().fontSize(14);
     chart.nodes().labels().fontWeight(600);
   
     // configure tooltips of nodes
     chart.nodes().tooltip().useHtml(true);
     chart.nodes().tooltip().format(
-      "<span style='font-weight:bold'>{%id} {%last_name}</span><br>group: {%group}"
+      "<span style='font-weight:bold;font-size:14px;'>{%id} {%last_name}</span><br>{%group}"
     );
   
     // set the shape of nodes in groups
@@ -407,7 +430,7 @@ label {
     // set the chart title
     chart.title().enabled(true);
     chart.title().fontColor('#F44336');
-    chart.title().fontSize(50);
+    chart.title().fontSize(40);
     chart.title().fontDecoration('underline');
     chart.title().fontWeight('bold');
     chart.title().fontWeight('bold');
@@ -427,9 +450,32 @@ label {
     // initiate drawing the chart
     chart.draw();
 });
+
 // set the layout type
 function layoutType(type) {
   chart.layout().type(type);
+}
+
+// zoom the chart in
+function zoomIn() {
+  chart.zoomIn();  
+}
+
+// zoom the chart out
+function zoomOut() {
+  chart.zoomOut();  
+}
+
+// move the chart by given values
+function move() {
+  var x = document.getElementById("xInput").value;
+  var y = document.getElementById("yInput").value;
+  chart.move(x, y);  
+}
+
+// fit the chart to the container
+function fit() {
+  chart.fit();  
 }</script>
  </body>
 </html>
