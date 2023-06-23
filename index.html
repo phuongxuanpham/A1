@@ -5,7 +5,7 @@
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <title>BCT Network Graph 08</title>
-  <link href="https://playground.anychart.com/OiKW5Jt7/iframe" rel="canonical">
+  <link href="https://playground.anychart.com/zmbHqcOa/iframe" rel="canonical">
   <meta content="Tooltip" name="keywords">
   <meta content="AnyChart - JavaScript Charts designed to be embedded and integrated" name="description">
   <!--[if lt IE 9]>
@@ -13,31 +13,15 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
   <link href="https://cdn.anychart.com/releases/8.11.1/css/anychart-ui.min.css?hcode=a0c21fc77e1449cc86299c5faa067dc4" rel="stylesheet" type="text/css">
-  <style>html, body {
+  <style>html, body, #container {
     width: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
 }
-button {
-    margin: 10px 0 0 10px;
-}
 label {
     display: inline-block;
     margin: 10px 0 0 10px;
-}
-input {
-    width: 30px;
-}
-#fitButton {
-    position: absolute;
-    right: 10px;
-}
-#container {
-    position: absolute;
-    width: 100%;
-    top: 35px;
-    bottom: 0;
 }
 </style>
  </head>
@@ -45,12 +29,9 @@ input {
   <meta charset="utf-8"> 
   <label><input onclick="layoutType('forced')" type="radio" name="type" checked>Giao lộ</label> 
   <label><input onclick="layoutType('fixed')" type="radio" name="type">Mạng nhện</label> 
-  <button id="zoomInButton" onclick="zoomIn()">Zoom In</button> 
-  <button id="zoomOutButton" onclick="zoomOut()">Zoom Out</button> 
-  <button id="moveButton" onclick="move()">Move</button> 
-  <label>x: <input id="xInput" value="50"></label> 
-  <label>y: <input id="yInput" value="50"></label> 
-  <button id="fitButton" onclick="fit()">Fit to Container</button> 
+  <script src="https://cdn.anychart.com/releases/8.11.1/js/anychart-ui.min.js"></script> 
+  <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/8.11.1/css/anychart-ui.min.css?hcode=a0c21fc77e1449cc86299c5faa067dc4"> 
+  <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/8.11.1/fonts/css/anychart-font.min.css"> 
   <div id="container"></div>
   <script src="https://cdn.anychart.com/releases/8.11.1/js/anychart-core.min.js?hcode=a0c21fc77e1449cc86299c5faa067dc4"></script>
   <script src="https://cdn.anychart.com/releases/8.11.1/js/anychart-graph.min.js?hcode=a0c21fc77e1449cc86299c5faa067dc4"></script>
@@ -374,6 +355,9 @@ input {
     // prevent zooming the chart with the mouse wheel
     chart.interactivity().zoomOnMouseWheel(true);
   
+    // prevent the default behavior of the chart
+    //chart.interactivity().enabled(false);
+  
     // access groups of nodes
     var xnl = chart.group("Xóm nhà lá");
     var xng = chart.group("Xóm nhà giàu");
@@ -425,7 +409,7 @@ input {
     chart.edges().tooltip().format("{%from} -> {%to}");
   
     // set the hover gap of edges
-  	chart.interactivity().hoverGap(30); 
+  	chart.interactivity().hoverGap(20); 
 
     // set the chart title
     chart.title().enabled(true);
@@ -443,6 +427,11 @@ input {
          chart.title().text('Mạng nhện tình yêu - A1 Quốc Học K94-97');                   
       } 
     });
+  
+    // add a zoom control panel
+    var zoomController = anychart.ui.zoom();
+    zoomController.target(chart);
+    zoomController.render();
 
     // set the container id
     chart.container("container");
@@ -455,27 +444,6 @@ input {
 function layoutType(type) {
   chart.layout().type(type);
 }
-
-// zoom the chart in
-function zoomIn() {
-  chart.zoomIn();  
-}
-
-// zoom the chart out
-function zoomOut() {
-  chart.zoomOut();  
-}
-
-// move the chart by given values
-function move() {
-  var x = document.getElementById("xInput").value;
-  var y = document.getElementById("yInput").value;
-  chart.move(x, y);  
-}
-
-// fit the chart to the container
-function fit() {
-  chart.fit();  
-}</script>
+</script>
  </body>
 </html>
